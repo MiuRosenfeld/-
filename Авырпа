@@ -1,0 +1,71 @@
+import random as rnd
+def KNB_game():
+    print("Добро пожаловать в игру Каки,Ножыцы,Бугага)))")
+    while True:
+        user_action = input("Сделайте выбор — камень, ножницы или бумага: ")
+        possible_actions = ["камень", "бумага", "ножницы"]
+        computer_action = rnd.choice(possible_actions)
+        print(f"\nВы выбрали {user_action}, компьютер выбрал {computer_action}.\n")
+        if user_action == computer_action:
+            print(f"Оба пользователя выбрали {user_action}. Ничья!!")
+        elif user_action == "камень":
+            if computer_action == "ножницы":
+                print("Камень бьет ножницы! Вы победили!")
+            else:
+                print("Бумага оборачивает камень! Вы проиграли.")
+        elif user_action == "бумага":
+            if computer_action == "камень":
+                print("Бумага оборачивает камень! Вы победили!")
+            else:
+                print("Ножницы режут бумагу! Вы проиграли.")
+        elif user_action == "ножницы":
+            if computer_action == "бумага":
+                print("Ножницы режут бумагу! Вы победили!")
+            else:
+                print("Камень бьет ножницы! Вы проиграли.")
+        play_again = ""
+        play_again = input("Сыграем еще? (д/н): ")
+        if play_again.lower() != "д":
+            break
+def OR_game():
+    print("Добро пожаловать в игру Орел или Решка")
+    from random import choice
+    win = defeat = 0
+    balance = 3
+    while True:
+        user = input('Орёл - 1 или Решка - 2: ')
+        if user not in ('12'):
+            print('Конец игры.')
+            break
+
+        pc = choice('12')
+        if pc == user:
+            win += 1
+            balance += 1
+        else:
+            defeat += 1
+            balance -= 1
+        print(f'Побед: {win}\nПоражений: {defeat}\nБаланс: {balance}')
+        if balance <= 0:
+            break
+def Vibor_igri(comand):
+    if comand == "help":
+        print("Программа позволяет сыграть в 2 игры.")
+        print("1) Орел и решка")
+        print("2) Камень ножницы бумага\n")
+        print("help - вывести подсказку")
+        print("exit - выйти из программы")
+    elif comand == "exit":
+        exit()
+    elif comand == "or":
+        OR_game()
+    elif comand == "knb" :
+        KNB_game()
+    else:
+        print("Я не знаю такой команды как \"" + comand + "\"")
+while input("Введите пароль: ") == "Bebriki":
+    isActive = True
+    while isActive:
+        vvod = input()
+        Vibor_igri(vvod)
+
